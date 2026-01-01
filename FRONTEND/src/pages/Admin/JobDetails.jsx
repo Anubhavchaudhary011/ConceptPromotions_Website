@@ -13,11 +13,7 @@ const JobDetails = ({ jobId, onBack }) => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-<<<<<<< HEAD
         `https://srv1168036.hstgr.cloud/api/admin/career/jobs/${jobId}`,
-=======
-        `https://supreme-419p.onrender.com/api/admin/career/jobs/${jobId}`,
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           method: "GET",
           headers: {
@@ -53,11 +49,7 @@ const JobDetails = ({ jobId, onBack }) => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-<<<<<<< HEAD
         `https://srv1168036.hstgr.cloud/api/admin/jobs/${jobId}`,
-=======
-        `https://supreme-419p.onrender.com/api/admin/jobs/${jobId}`,
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           method: "PUT",
           headers: {
@@ -76,11 +68,7 @@ const JobDetails = ({ jobId, onBack }) => {
         toast.error(data.message || "Update failed", { theme: "dark" });
       } else {
         setJob(data.job);
-<<<<<<< HEAD
         toast.success("Status updated", { theme: "dark" });
-=======
-        toast.success("Status updated ✅", { theme: "dark" });
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       }
     } catch (err) {
       console.log(err);
@@ -90,17 +78,10 @@ const JobDetails = ({ jobId, onBack }) => {
     setSaving(false);
   };
 
-<<<<<<< HEAD
   if (!job) return <p className="text-gray-200 text-center mt-10">Loading...</p>;
 
   return (
     <div className="p-6 bg-[#EDEDED] rounded shadow-md max-w-3xl mx-auto mt-10">
-=======
-  if (!job) return <p>Loading...</p>;
-
-  return (
-    <div>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       <ToastContainer />
 
       <button

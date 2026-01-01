@@ -17,29 +17,17 @@ const ClientSignIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-<<<<<<< HEAD
   const [loading, setLoading] = useState(false); // ✅ loading state
-=======
-  const [loading, setLoading] = useState(false);   // ✅ loading state
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     setLoading(true);
 
     try {
       const response = await fetch(
         "https://srv1168036.hstgr.cloud/api/client/admin/login", // ✅ FIXED URL (removed /api)
-=======
-    setLoading(true);   // ✅ Start Loading
-
-    try {
-      const response = await fetch(
-        "https://supreme-419p.onrender.com/api/client/admin/login",
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,18 +44,9 @@ const ClientSignIn = () => {
         return;
       }
 
-<<<<<<< HEAD
       // ✅ Save token + user info (backend returns `admin`)
       localStorage.setItem("client_token", data.token);
       localStorage.setItem("client_user", JSON.stringify(data.admin)); // ✅ FIXED
-=======
-      // ✅ Save token + user info
-      localStorage.setItem("client_token", data.token);
-      localStorage.setItem(
-        "client_user",
-        JSON.stringify(data.clientAdmin)
-      );
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
       toast.success("✅ Login successful!", { theme: "dark" });
 
@@ -79,11 +58,7 @@ const ClientSignIn = () => {
       toast.error("Server error. Try again later.", { theme: "dark" });
     }
 
-<<<<<<< HEAD
     setLoading(false); // ✅ End Loading
-=======
-    setLoading(false);   // ✅ End Loading
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
   };
 
   return (

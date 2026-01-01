@@ -16,11 +16,7 @@ import {
 } from "react-icons/fa"
 import { IoClose } from "react-icons/io5"
 
-<<<<<<< HEAD
 const API_URL = "https://srv1168036.hstgr.cloud/api/admin/employees"
-=======
-const API_URL = "https://supreme-419p.onrender.com/api/admin/employees"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
 const SearchableSelect = ({ label, placeholder, options, value, onChange }) => {
   const [open, setOpen] = useState(false)

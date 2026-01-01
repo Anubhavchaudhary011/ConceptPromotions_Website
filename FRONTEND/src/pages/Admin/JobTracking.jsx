@@ -4,11 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 const JobTracking = ( { onViewJob }) => {
     const [allJobs, setAllJobs] = useState([]);
-<<<<<<< HEAD
     const [filteredJobs, setFilteredJobs] = useState([]); 
-=======
-    const [filteredJobs, setFilteredJobs] = useState([]); // ✅ Show none initially
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
     const [searchTerm, setSearchTerm] = useState("");
     const [status, setStatus] = useState("active");
@@ -17,11 +13,7 @@ const JobTracking = ( { onViewJob }) => {
     const [dateRange, setDateRange] = useState(null);
     const [customDate, setCustomDate] = useState({ from: "", to: "" });
 
-<<<<<<< HEAD
     // Normalize date — removes time
-=======
-    // ✅ Normalize date — removes time
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
     const normalize = (dt) => {
         const d = new Date(dt);
         d.setHours(0, 0, 0, 0);
@@ -32,11 +24,7 @@ const JobTracking = ( { onViewJob }) => {
     const fetchJobs = async () => {
         try {
             const token = localStorage.getItem("token");
-<<<<<<< HEAD
             const res = await fetch("https://srv1168036.hstgr.cloud/api/admin/jobs", {
-=======
-            const res = await fetch("https://supreme-419p.onrender.com/api/admin/jobs", {
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -67,30 +55,18 @@ const JobTracking = ( { onViewJob }) => {
         value: d,
     }));
 
-<<<<<<< HEAD
     // Apply filters only when Search clicked
     const applyFilters = () => {
         let filtered = [...allJobs];
 
         // Status filter
-=======
-    // ✅ Apply filters only when Search clicked
-    const applyFilters = () => {
-        let filtered = [...allJobs];
-
-        // ✅ Status filter
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (status !== "all") {
             filtered = filtered.filter((job) =>
                 status === "active" ? job.isActive === true : job.isActive === false
             );
         }
 
-<<<<<<< HEAD
         // Search filter
-=======
-        // ✅ Search filter
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (searchTerm.trim().length > 0) {
             filtered = filtered.filter(
                 (job) =>
@@ -99,29 +75,17 @@ const JobTracking = ( { onViewJob }) => {
             );
         }
 
-<<<<<<< HEAD
         // Department
-=======
-        // ✅ Department
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (department) {
             filtered = filtered.filter((job) => job.title === department.value);
         }
 
-<<<<<<< HEAD
         // State
-=======
-        // ✅ State
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (state) {
             filtered = filtered.filter((job) => job.location === state.value);
         }
 
-<<<<<<< HEAD
         // Custom Date (highest priority)
-=======
-        // ✅ Custom Date (highest priority)
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (customDate.from && customDate.to) {
             const fromDate = normalize(customDate.from);
             const toDate = normalize(customDate.to);
@@ -135,11 +99,7 @@ const JobTracking = ( { onViewJob }) => {
             return;
         }
 
-<<<<<<< HEAD
         // Date Range
-=======
-        // ✅ Date Range
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         if (dateRange && dateRange.value !== "custom") {
             let months = 0;
             if (dateRange.value === "3m") months = 3;
@@ -314,11 +274,7 @@ const JobTracking = ( { onViewJob }) => {
             </div>
 
             {filteredJobs.length === 0 && (
-<<<<<<< HEAD
                 <p className="text-gray-200 text-center mt-10">
-=======
-                <p className="text-gray-500 text-center mt-10">
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                     No jobs to display. Apply filters and search.
                 </p>
             )}

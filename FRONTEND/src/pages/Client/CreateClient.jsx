@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import Select from "react-select";
-=======
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 import {
   FaEnvelope,
   FaUser,
@@ -12,7 +9,6 @@ import {
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-<<<<<<< HEAD
 const regionStates = {
   North: [
     "Jammu and Kashmir",
@@ -109,14 +105,11 @@ const customSelectStyles = {
   }),
 };
 
-=======
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 const CreateClient = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [organizationName, setOrganizationName] = useState("");
-<<<<<<< HEAD
   const [role, setRole] = useState(null);
   const [regions, setRegions] = useState([]);
   const [states, setStates] = useState([]);
@@ -162,17 +155,11 @@ const CreateClient = () => {
 
   const stateOptions = getStateOptions();
 
-=======
-
-  const [loading, setLoading] = useState(false);
-
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
   const resetForm = () => {
     setName("");
     setEmail("");
     setContactNo("");
     setOrganizationName("");
-<<<<<<< HEAD
     setRole(null);
     setRegions([]);
     setStates([]);
@@ -212,21 +199,11 @@ const CreateClient = () => {
     setLoading(true);
 
     if (!name || !email || !organizationName || !role || !contactNo) {
-=======
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    if (!name || !email || !organizationName) {
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       toast.error("Please fill all required fields!", { theme: "dark" });
       setLoading(false);
       return;
     }
 
-<<<<<<< HEAD
     // Validate based on role
     if (role.value === "state" && states.length === 0) {
       toast.error("Please select at least one state!", { theme: "dark" });
@@ -274,13 +251,6 @@ const CreateClient = () => {
 
       const response = await fetch(
         "https://srv1168036.hstgr.cloud/api/admin/add-client-admin",
-=======
-    try {
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        "https://supreme-419p.onrender.com/api/admin/add-client-admin",
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           method: "POST",
           headers: {
@@ -292,14 +262,10 @@ const CreateClient = () => {
             email,
             contactNo,
             organizationName,
-<<<<<<< HEAD
             password: "TempPass@123",
             role: role.value,
             regions: regionsArray,
             states: statesArray,
-=======
-            password: "", // sending blank — backend must handle
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
           }),
         }
       );
@@ -307,19 +273,11 @@ const CreateClient = () => {
       const data = await response.json();
 
       if (!response.ok) {
-<<<<<<< HEAD
         toast.error(data.message || "Error in creating client", {
           theme: "dark",
         });
       } else {
         toast.success("Client created successfully!", {
-=======
-        toast.error(data.message || "Error creating client", {
-          theme: "dark",
-        });
-      } else {
-        toast.success("✅ Client created successfully!", {
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
           theme: "dark",
         });
         resetForm();
@@ -336,30 +294,17 @@ const CreateClient = () => {
     <>
       <ToastContainer />
 
-<<<<<<< HEAD
       <div className="w-full max-w-lg bg-[#EDEDED] shadow-md rounded-xl p-8 mx-auto mb-10">
         {/* Header */}
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold text-[#E4002B]">Create Client</h1>
-=======
-      <div className="w-full max-w-lg bg-white shadow-md rounded-xl p-8 mx-auto">
-        {/* Header */}
-        <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-[#E4002B]">
-            Create Client
-          </h1>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
           <p className="text-gray-600 mt-1 text-sm">
             Add a new client for your organization.
           </p>
         </div>
 
         {/* Form */}
-<<<<<<< HEAD
         <div className="space-y-5">
-=======
-        <form className="space-y-5" onSubmit={handleSubmit}>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
           {/* Full Name */}
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -369,11 +314,7 @@ const CreateClient = () => {
               <FaUser className="absolute left-3 top-3 text-gray-400" />
               <input
                 type="text"
-<<<<<<< HEAD
                 placeholder="Enter your full name"
-=======
-                placeholder="Type name here"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#E4002B]"
                 required
                 value={name}
@@ -391,11 +332,7 @@ const CreateClient = () => {
               <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
               <input
                 type="email"
-<<<<<<< HEAD
                 placeholder="Enter your email address"
-=======
-                placeholder="example@gmail.com"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#E4002B]"
                 required
                 value={email}
@@ -407,7 +344,6 @@ const CreateClient = () => {
           {/* Phone Number */}
           <div>
             <label className="block text-sm font-medium mb-1">
-<<<<<<< HEAD
               Phone Number <span className="text-red-500">*</span>
             </label>
             <div className="relative">
@@ -422,16 +358,6 @@ const CreateClient = () => {
                 }}
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#E4002B]"
                 required
-=======
-              Phone Number
-            </label>
-            <div className="relative">
-              <FaPhoneAlt className="absolute left-3 top-3 text-gray-400" />
-              <input
-                type="tel"
-                placeholder="123-456-7890"
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#E4002B]"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 value={contactNo}
                 onChange={(e) => setContactNo(e.target.value)}
               />
@@ -447,11 +373,7 @@ const CreateClient = () => {
               <FaBuilding className="absolute left-3 top-3 text-gray-400" />
               <input
                 type="text"
-<<<<<<< HEAD
                 placeholder="Enter organization name"
-=======
-                placeholder="Organization Name"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#E4002B]"
                 required
                 value={organizationName}
@@ -460,7 +382,6 @@ const CreateClient = () => {
             </div>
           </div>
 
-<<<<<<< HEAD
           {/* Role */}
           <div>
             <label className="block text-sm font-medium mb-1.5 text-gray-700">
@@ -545,28 +466,15 @@ const CreateClient = () => {
           {/* Submit */}
           <button
             onClick={handleSubmit}
-=======
-          {/* Submit */}
-          <button
-            type="submit"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
             disabled={loading}
             className="w-full bg-[#E4002B] text-white py-2 rounded-lg font-medium hover:bg-[#C3002B] transition disabled:opacity-60"
           >
             {loading ? "Creating..." : "Create Client"}
           </button>
-<<<<<<< HEAD
         </div>
-=======
-        </form>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       </div>
     </>
   );
 };
 
-<<<<<<< HEAD
 export default CreateClient;
-=======
-export default CreateClient;
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0

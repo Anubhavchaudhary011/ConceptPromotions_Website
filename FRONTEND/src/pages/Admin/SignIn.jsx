@@ -18,11 +18,7 @@ const SignIn = () => {
 
     try {
       const response = await fetch(
-<<<<<<< HEAD
         "https://srv1168036.hstgr.cloud/api/admin/login",
-=======
-        "https://supreme-419p.onrender.com/api/admin/login",
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -105,13 +105,8 @@ const BulkUpload = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <div className="min-h-screen flex flex-col justify-start items-center bg-[#171717] px-4">
         <div className="bg-[#EDEDED] shadow-md rounded-xl p-8 w-full max-w-lg text-center">
-=======
-      <div className="min-h-screen flex flex-col justify-start items-center bg-gray-50 px-4">
-        <div className="bg-white shadow-md rounded-xl p-8 w-full max-w-lg text-center">
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
           <h1 className="text-2xl font-semibold mb-4 text-[#E4002B]">
             Upload Bulk Data
           </h1>

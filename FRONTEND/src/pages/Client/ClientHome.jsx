@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import Select from "react-select";
 import { FaStore, FaCheckCircle, FaClipboardList, FaMoneyBillWave, FaSearch } from "react-icons/fa";
@@ -17,25 +16,6 @@ ChartJS.register(
   LineElement,
   PointElement
 );
-=======
-import React, { useState } from "react"
-import Select from "react-select"
-import { FaStore, FaCheckCircle, FaClipboardList, FaMoneyBillWave, FaSearch } from "react-icons/fa"
-
-// Dummy dropdown options
-const campaignOptions = [
-  { value: "campaign1", label: "Campaign A" },
-  { value: "campaign2", label: "Campaign B" },
-  { value: "campaign3", label: "Campaign C" },
-]
-
-const regionOptions = [
-  { value: "north", label: "North" },
-  { value: "south", label: "South" },
-  { value: "east", label: "East" },
-  { value: "west", label: "West" },
-]
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
 const regionStates = {
   North: [
@@ -82,7 +62,6 @@ const regionStates = {
     "Chhattisgarh",
     "Dadra and Nagar Haveli and Daman and Diu",
   ],
-<<<<<<< HEAD
 };
 
 const paymentOptions = [
@@ -90,15 +69,6 @@ const paymentOptions = [
   { value: "Partially Paid", label: "Partially Paid" },
   { value: "Completed", label: "Completed" },
 ];
-=======
-}
-
-const paymentOptions = [
-  { value: "paid", label: "Paid" },
-  { value: "pending", label: "Pending" },
-  { value: "failed", label: "Failed" },
-]
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 
 const dateOptions = [
   { value: "today", label: "Today" },
@@ -108,14 +78,8 @@ const dateOptions = [
   { value: "thisMonth", label: "This Month" },
   { value: "lastMonth", label: "Last Month" },
   { value: "custom", label: "Custom Range" },
-<<<<<<< HEAD
 ];
 
-=======
-]
-
-// Custom styling
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 const customSelectStyles = {
   control: (provided, state) => ({
     ...provided,
@@ -150,7 +114,6 @@ const customSelectStyles = {
     ...provided,
     zIndex: 20,
   }),
-<<<<<<< HEAD
 };
 
 const ClientHome = ({ campaigns = [], payments = [], reportedOutlets = [], loading }) => {
@@ -414,65 +377,6 @@ const ClientHome = ({ campaigns = [], payments = [], reportedOutlets = [], loadi
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#E4002B]"></div>
       </div>
     );
-=======
-}
-
-const ClientHome = () => {
-  const [campaigns, setCampaigns] = useState([])
-  const [regions, setRegions] = useState([])
-  const [states, setStates] = useState([])
-  const [payment, setPayment] = useState(null)
-  const [dateRange, setDateRange] = useState(null)
-  const [showCustomDate, setShowCustomDate] = useState(false)
-  const [fromDate, setFromDate] = useState("")
-  const [toDate, setToDate] = useState("")
-  const [searchText, setSearchText] = useState("")
-
-  const getStateOptions = () => {
-    if (regions.length === 0) {
-      const allStates = Object.values(regionStates).flat()
-      return allStates.map(state => ({
-        value: state.toLowerCase().replace(/\s+/g, '-'),
-        label: state
-      }))
-    }
-
-    const filteredStates = regions.flatMap(region => {
-      const regionKey = region.label 
-      return regionStates[regionKey] || []
-    })
-
-    return filteredStates.map(state => ({
-      value: state.toLowerCase().replace(/\s+/g, '-'),
-      label: state
-    }))
-  }
-
-  const stateOptions = getStateOptions()
-
-  const handleRegionChange = (selectedRegions) => {
-    setRegions(selectedRegions)
-    if (selectedRegions.length > 0) {
-      const validStateLabels = selectedRegions.flatMap(region => regionStates[region.label] || [])
-      const filteredStates = states.filter(state =>
-        validStateLabels.some(validState =>
-          validState.toLowerCase().replace(/\s+/g, '-') === state.value
-        )
-      )
-      setStates(filteredStates)
-    }
-  }
-
-  const handleDateChange = (selected) => {
-    setDateRange(selected)
-    if (selected?.value === "custom") {
-      setShowCustomDate(true)
-    } else {
-      setShowCustomDate(false)
-      setFromDate("")
-      setToDate("")
-    }
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
   }
 
   return (
@@ -489,13 +393,8 @@ const ClientHome = () => {
             <Select
               styles={customSelectStyles}
               options={campaignOptions}
-<<<<<<< HEAD
               value={selectedCampaigns}
               onChange={setSelectedCampaigns}
-=======
-              value={campaigns}
-              onChange={setCampaigns}
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
               isSearchable
               isMulti
               placeholder="Select campaigns"
@@ -584,10 +483,6 @@ const ClientHome = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {/* Search Bar with Button */}
         <div>
           <label className="block text-sm font-medium mb-1.5 text-gray-700">Search</label>
@@ -613,43 +508,26 @@ const ClientHome = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
       {/* CARDS - NOW WITH ACTUAL DATA */}
-=======
-      {/* CARDS */}
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
           <FaStore className="text-[#E4002B] text-3xl mx-auto mb-2" />
           <h3 className="text-lg font-semibold">Outlets Enrolled</h3>
-<<<<<<< HEAD
           <p className="text-3xl font-bold">{statistics.outletsEnrolled}</p>
-=======
-          <p className="text-3xl font-bold">XX</p>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         </div>
         <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
           <FaCheckCircle className="text-[#E4002B] text-3xl mx-auto mb-2" />
           <h3 className="text-lg font-semibold">Outlets Activated</h3>
-<<<<<<< HEAD
           <p className="text-3xl font-bold">{statistics.outletsActivated}</p>
-=======
-          <p className="text-3xl font-bold">XX</p>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         </div>
         <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
           <FaClipboardList className="text-[#E4002B] text-3xl mx-auto mb-2" />
           <h3 className="text-lg font-semibold">Outlets Reported</h3>
-<<<<<<< HEAD
           <p className="text-3xl font-bold">{statistics.outletsReported}</p>
-=======
-          <p className="text-3xl font-bold">XX</p>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         </div>
         <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
           <FaMoneyBillWave className="text-[#E4002B] text-3xl mx-auto mb-2" />
           <h3 className="text-lg font-semibold">Outlets Paid</h3>
-<<<<<<< HEAD
           <p className="text-3xl font-bold">{statistics.outletsPaid}</p>
         </div>
       </div>
@@ -943,15 +821,3 @@ const ClientHome = () => {
 };
 
 export default ClientHome;
-=======
-          <p className="text-3xl font-bold">XX</p>
-        </div>
-      </div>
-
-      <div className="text-gray-500 text-center">Graphs will appear here...</div>
-    </div>
-  )
-}
-
-export default ClientHome
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0

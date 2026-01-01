@@ -26,11 +26,7 @@ const UpdateJob = ({ onEditJob }) => {
       }
 
       const response = await fetch(
-<<<<<<< HEAD
         "https://srv1168036.hstgr.cloud/api/admin/jobs",
-=======
-        "https://supreme-419p.onrender.com/api/admin/jobs",
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         {
           headers: {
             "Content-Type": "application/json",
@@ -63,39 +59,23 @@ const UpdateJob = ({ onEditJob }) => {
   return (
     <>
       {/* Job Cards Section */}
-<<<<<<< HEAD
       <div className="min-h-screen bg-[#171717] pt-4 px-4 md:px-10 pb-10">
-=======
-      <div className="min-h-screen bg-gray-50 pt-4 px-4 md:px-10 pb-10">
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         <h1 className="text-2xl font-bold mb-6 text-center text-[#E4002B]">
           Job Listings
         </h1>
 
         {loading ? (
-<<<<<<< HEAD
           <p className="text-gray-200">Loading jobs...</p>
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : jobs.length === 0 ? (
           <p className="text-gray-200">No active jobs found.</p>
-=======
-          <p className="text-gray-600">Loading jobs...</p>
-        ) : error ? (
-          <p className="text-red-500">{error}</p>
-        ) : jobs.length === 0 ? (
-          <p className="text-gray-500">No active jobs found.</p>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobs.map((job) => (
               <div
                 key={job._id}
-<<<<<<< HEAD
                 className="bg-[#EDEDED] border-2 border-gray-500 rounded-xl shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between"
-=======
-                className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-md transition flex flex-col justify-between"
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
               >
                 <div>
                   {/* Job Title */}

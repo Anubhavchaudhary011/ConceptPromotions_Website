@@ -18,11 +18,7 @@ const CurrentOpenings = () => {
   const fetchJobs = async () => {
     try {
       setLoading(true);
-<<<<<<< HEAD
       const res = await fetch("https://srv1168036.hstgr.cloud/api/career/jobs");
-=======
-      const res = await fetch("https://supreme-419p.onrender.com/api/career/jobs");
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
       const data = await res.json();
 
       if (res.ok && data.jobs) {

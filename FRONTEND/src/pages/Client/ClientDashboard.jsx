@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-=======
-import React, { useState } from "react";
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
 import {
     FaHome,
     FaWallet,
@@ -21,7 +17,6 @@ import ContactUs from "./ContactUs";
 const ClientDashboard = () => {
     const [selectedComponent, setSelectedComponent] = useState("dashboard");
 
-<<<<<<< HEAD
     // API DATA STATES
     const [campaigns, setCampaigns] = useState([]);
     const [payments, setPayments] = useState([]);
@@ -127,22 +122,6 @@ const ClientDashboard = () => {
                 return <ContactUs />;
             default:
                 return <ClientHome {...sharedProps} />;
-=======
-    const renderContent = () => {
-        switch (selectedComponent) {
-            case "dashboard":
-                return <ClientHome />;
-            case "passbook":
-                return <Passbook />;
-            case "notifications":
-                return <Notifications />;
-            case "detailer":
-                return <DetailedReport />;
-            case "contact":
-                return <ContactUs />;
-            default:
-                return <ClientHome />;
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
         }
     };
 
@@ -150,43 +129,27 @@ const ClientDashboard = () => {
 
     return (
         <>
-<<<<<<< HEAD
             {/* TOP NAVBAR */}
             <nav className="fixed top-0 w-full z-50 bg-white shadow-md px-6 md:px-10">
                 <div className="flex justify-between items-center py-4 max-w-screen-xl mx-auto relative">
                     <img src="cpLogo.jpg" alt="Logo" className="h-12 cursor-pointer" />
 
-=======
-            {/* TOP Navbar */}
-            <nav className="fixed top-0 w-full z-50 bg-white shadow-md px-6 md:px-10">
-                <div className="flex justify-between items-center py-4 max-w-screen-xl mx-auto relative">
-                    <img src="cpLogo.jpg" alt="Logo" className="h-12 cursor-pointer" />
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                     <h2 className="absolute left-1/2 transform -translate-x-1/2 text-xl md:text-2xl font-bold text-[#E4002B]">
                         Client Home Page
                     </h2>
                 </div>
             </nav>
 
-<<<<<<< HEAD
             {/* LAYOUT */}
             <div className="flex min-h-screen bg-gray-50 pt-20">
 
-=======
-            {/* Layout */}
-            <div className="flex min-h-screen bg-gray-50 pt-20">
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                 {/* SIDEBAR */}
                 <div className="w-64 bg-white shadow-md h-[calc(100vh-5rem)] fixed top-20 left-0 p-4">
                     <div className="text-center mb-6">
                         <FaUserCircle className="h-20 w-20 mx-auto text-[#E4002B]" />
-<<<<<<< HEAD
                         <h3 className="mt-3 text-lg font-semibold text-gray-800">
                             Welcome, Client
                         </h3>
-=======
-                        <h3 className="mt-3 text-lg font-semibold text-gray-800">Welcome, Client</h3>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
                     </div>
 
                     <ul className="space-y-3 text-gray-700 font-medium">
@@ -233,20 +196,12 @@ const ClientDashboard = () => {
                 </div>
 
                 {/* MAIN CONTENT */}
-<<<<<<< HEAD
                 <div className="ml-64 p-6 w-full h-[calc(100vh-5rem)] overflow-y-auto">
                     {renderContent()}
                 </div>
-=======
-                <div className="ml-64 p-6 w-full h-[calc(100vh-5rem)] overflow-y-auto">{renderContent()}</div>
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
             </div>
         </>
     );
 };
 
-<<<<<<< HEAD
 export default ClientDashboard;
-=======
-export default ClientDashboard;
->>>>>>> 4a2fe61ee6d0663e8a7052dc0ea1435b40b336d0
