@@ -2236,61 +2236,69 @@ export const getEmployeeRetailerMapping = async (req, res) => {
         const { campaignId } = req.params;
 
         const campaign = await Campaign.findById(campaignId)
-            .select(
-                "assignedEmployees assignedRetailers assignedEmployeeRetailers"
-            )
+            .select("assignedEmployeeRetailers")
             .lean();
 
         if (!campaign) {
             return res.status(404).json({ message: "Campaign not found" });
         }
 
+        // 🔒 SAFETY: ensure array always exists
+        const mappings = Array.isArray(campaign.assignedEmployeeRetailers)
+            ? campaign.assignedEmployeeRetailers
+            : [];
+
+        // ✅ If no mappings, return empty but VALID response
+        if (mappings.length === 0) {
+            return res.status(200).json({
+                campaignId,
+                totalEmployees: 0,
+                employees: [],
+            });
+        }
+
         // --------------------------------------------
-        // Fetch ALL employees (full documents)
+        // Fetch employees
         // --------------------------------------------
-        const employeeIds = campaign.assignedEmployeeRetailers.map(
-            (m) => m.employeeId
-        );
+        const employeeIds = [...new Set(mappings.map((m) => m.employeeId))];
 
         const employees = await Employee.find({
             _id: { $in: employeeIds },
-        }).lean(); //  <-- FULL EMPLOYEE DOC
+        }).lean();
 
         const employeeMap = {};
-        employees.forEach((e) => {
-            employeeMap[e._id] = {
-                ...e, // all fields of employee
+        employees.forEach((emp) => {
+            employeeMap[emp._id.toString()] = {
+                ...emp,
                 retailers: [],
             };
         });
 
         // --------------------------------------------
-        // Fetch ALL retailers (full documents)
+        // Fetch retailers
         // --------------------------------------------
-        const retailerIds = campaign.assignedEmployeeRetailers.map(
-            (m) => m.retailerId
-        );
+        const retailerIds = [...new Set(mappings.map((m) => m.retailerId))];
 
         const retailers = await Retailer.find({
             _id: { $in: retailerIds },
-        }).lean(); // <-- FULL RETAILER DOC
+        }).lean();
 
         const retailerMap = {};
-        retailers.forEach((r) => {
-            retailerMap[r._id] = r;
+        retailers.forEach((ret) => {
+            retailerMap[ret._id.toString()] = ret;
         });
 
         // --------------------------------------------
-        // Build mapping: employee → list of retailers
+        // Build employee → retailers mapping
         // --------------------------------------------
-        campaign.assignedEmployeeRetailers.forEach((mapping) => {
-            const eId = mapping.employeeId;
-            const rId = mapping.retailerId;
+        mappings.forEach((m) => {
+            const eId = m.employeeId.toString();
+            const rId = m.retailerId.toString();
 
-            if (employeeMap[eId]) {
+            if (employeeMap[eId] && retailerMap[rId]) {
                 employeeMap[eId].retailers.push({
-                    ...retailerMap[rId], // full retailer data
-                    assignedAt: mapping.assignedAt,
+                    ...retailerMap[rId],
+                    assignedAt: m.assignedAt,
                 });
             }
         });
@@ -2301,13 +2309,14 @@ export const getEmployeeRetailerMapping = async (req, res) => {
         res.status(200).json({
             campaignId,
             totalEmployees: Object.keys(employeeMap).length,
-            employees: Object.values(employeeMap), // full employees with full retailers list
+            employees: Object.values(employeeMap),
         });
     } catch (err) {
         console.error("Employee→Retailer mapping fetch error:", err);
         res.status(500).json({ message: "Server error" });
     }
 };
+
 export const assignVisitSchedule = async (req, res) => {
     try {
         const {
